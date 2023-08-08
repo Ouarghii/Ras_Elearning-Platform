@@ -1,0 +1,150 @@
+.questions {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  .container-dark {
+    background-color: #222222;
+    color: #ffffff;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+  .text-light {
+    color: #0dff92;
+  }
+  
+  .text-primary {
+    color: #0dff92;
+  }
+  
+  .lu {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .il {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  input[type="radio"] {
+    display: none; /* Hide the default radio button */
+  }
+  
+  .check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  .checked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: #0dff92;
+    border-radius: 50%;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  input[type="radio"]:checked ~ .checked::before {
+    opacity: 1;
+  }
+  /* Add this to your Question.css file */
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.prev-button {
+    background-color: #ffea70;
+    color: #222222;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.prev-button:hover {
+    background-color: #f0d94c;
+    color: #222222;
+}
+
+.next-button {
+    background-color: #0dff92;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.next-button:hover {
+    background-color: #00e07e;
+}
+.option-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+}
+
+.option-label .check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.question-header {
+    display: flex;
+    align-items: center;
+}
+
+.question-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin-left: 10px;
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.check.checked {
+    background-color: #0dff92;
+    border-color: #0dff92;
+}

@@ -1,0 +1,263 @@
+body {
+    background: linear-gradient(253deg, #0cc898, #1797d2, #864fe1);
+    background-size: 300% 300%;
+    -webkit-animation: Background 25s ease infinite;
+    -moz-animation: Background 25s ease infinite;
+    animation: Background 25s ease infinite;
+  }
+  
+  @-webkit-keyframes Background {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+  
+  @-moz-keyframes Background {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+  
+  @keyframes Background {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+  .scroll-container {
+    overflow-y: auto;
+    height: 100vh;
+  }
+  
+  .content {
+    padding: 2rem;
+  }
+  
+  .full-screen {
+    /* position: fixed; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(https://i.imgur.com/wCG2csZ.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    /* works with row or column */
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 4em;
+    letter-spacing: -2px;
+    text-align: center;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
+  }
+  
+  h1:after {
+    display: block;
+    color: #fff;
+    letter-spacing: 1px;
+    font-family: 'Poiret One', sans-serif;
+    content: 'all what you need to improve your skills';
+    font-size: .4em;
+    text-align: center;
+  }
+  
+  .button-line {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    text-align: center;
+    font-size: 1.4em;
+    opacity: .8;
+    padding: 20px 40px;
+    text-decoration: none;
+    transition: all .5s ease;
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+  }
+  
+  .button-line:hover {
+    opacity: 1;
+  }
+  .form-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* body {
+    background-color: #444442;
+    padding-top: 85px;
+  } */
+  
+.h1 {
+    font-family: 'Poppins', sans-serif, 'arial';
+    font-weight: 600;
+    font-size: 72px;
+    color: white;
+    text-align: center;
+  }
+  
+  h4 {
+    font-family: 'Roboto', sans-serif, 'arial';
+    font-weight: 400;
+    font-size: 20px;
+    color: #9b9b9b;
+    line-height: 1.5;
+  }
+  
+  /* ///// inputs /////*/
+  
+  input:focus ~ label,
+  textarea:focus ~ label,
+  input:valid ~ label,
+  textarea:valid ~ label {
+    font-size: 0.75em;
+    color: #999;
+    top: -5px;
+    -webkit-transition: all 0.225s ease;
+    transition: all 0.225s ease;
+  }
+  
+  .styled-input {
+    float: left;
+    width: 293px;
+    margin: 1rem 0;
+    position: relative;
+    border-radius: 4px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .styled-input {
+      width: 100%;
+    }
+  }
+  
+  .styled-input label {
+    color: #999;
+    padding: 1.3rem 30px 1rem 30px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    pointer-events: none;
+  }
+  
+  .styled-input.wide {
+    width: 650px;
+    max-width: 100%;
+  }
+  
+  input.input,
+  textarea.input {
+    padding: 30px;
+    border: 0;
+    width: 100%;
+    font-size: 1rem;
+    background-color: #2d2d2d;
+    color: white;
+    border-radius: 4px;
+  }
+  
+  input:focus.input,
+  textarea:focus.input {
+    outline: 0;
+  }
+  
+  input.input:focus ~ span,
+  textarea.input:focus ~ span {
+    width: 100%;
+    -webkit-transition: all 0.075s ease;
+    transition: all 0.075s ease;
+  }
+  
+  textarea.input {
+    width: 100%;
+    min-height: 15em;
+  }
+  
+  .input-container {
+    width: 650px;
+    max-width: 100%;
+    margin: 20px auto 25px auto;
+  }
+  
+  .submit-btn {
+    float: right;
+    padding: 7px 35px;
+    border-radius: 60px;
+    display: inline-block;
+    background-color: #4b8cfb;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 2px 10px 0 rgba(0, 0, 0, 0.07);
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+  }
+  
+  .submit-btn:hover {
+    transform: translateY(1px);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.10),
+      0 1px 1px 0 rgba(0, 0, 0, 0.09);
+  }
+  
+  @media (max-width: 768px) {
+    .submit-btn {
+      width: 100%;
+      float: none;
+      text-align: center;
+    }
+  }
+  
+  input[type='checkbox'] + label {
+    color: #ccc;
+    font-style: italic;
+  }
+  
+  input[type='checkbox']:checked + label {
+    color: #f00;
+    font-style: normal;
+  }
+  

@@ -1,0 +1,153 @@
+/* MeetingRoom.css */
+
+.meeting-container {
+    background-color: #f6f8fa;
+    height: 100vh; /* Use the full viewport height */
+    padding: 20px;
+  }
+  
+  .header-row {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .meeting-title {
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .video-stream {
+    width: 100%;
+    max-height: 1000px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-row {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .action-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .join-button {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+  }
+  
+  .leave-button {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+  }
+  
+  .sharing-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  }
+  
+  .sharing-button-active {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+  }
+  
+  .invite-button {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #333;
+  }
+  
+  .meeting-code {
+    margin-top: 10px;
+    color: #777;
+  }
+  
+  /* You can continue customizing the styles as needed */
+/* Add your other styles here */
+
+.participants-grid-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .participants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    max-height: 50vh; /* Limit the height of the participant grid */
+  }
+  
+ 
+  
+  .participant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .participant-name {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .participant-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .main-camera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 2px solid #28a745; /* Border for the main camera */
+    border-radius: 10px;
+    background-color: #f0f0f0;
+  }
+  .main-camera-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid #28a745;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .main-video {
+    width: 100%;
+    max-height: 100%;
+    border: 2px solid #28a745;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .participant-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .participants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-height: 50vh;
+  }
+  

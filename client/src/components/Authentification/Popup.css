@@ -1,0 +1,33 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* Reduced z-index value */
+}
+  
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column; /* Display buttons in a column */
+  align-items: center; /* Center align buttons */
+  gap: 10px;
+  z-index: 101; /* Higher z-index to place buttons above overlay */
+}
+  
+  .close-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+  }
+  .bttn :hover{
+    cursor: pointer;
+  }
+  
