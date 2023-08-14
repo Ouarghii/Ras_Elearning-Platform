@@ -2,8 +2,17 @@ import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './Main.css'
 import { Input } from '@chakra-ui/react'
+import {useDispatch} from 'react-redux'
+import { setUserId } from '../redux/result_react_reducers'
 const Main = () => {
     const inputRef=useRef(null)
+    const dispatch=useDispatch()
+
+    function startQuiz(){
+        if(inputRef.current?.value){
+            dispatch(setUserId(inputRef.current?.value))
+        }
+    }
   return (
     <div className='root'>
 
@@ -22,7 +31,7 @@ const Main = () => {
             </Input>
         </form>
         <div className='start' style={{marginTop:'50px'}}>
-            <Link to='/QuizReact' className='btn'>Start React Quiz</Link>
+            <Link to='/QuizReact' className='btn' onClick={startQuiz}>Start React Quiz</Link>
         </div>
     </div>
     </div>

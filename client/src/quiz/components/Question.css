@@ -136,15 +136,21 @@
     }
 }
 .check {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    position: relative;
-    transition: background-color 0.3s;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #0dff92; /* Change border color to green */
+  border-radius: 50%;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
+
 .check.checked {
-    background-color: #0dff92;
-    border-color: #0dff92;
+  background-color: #0dff92 80%;
+  border-color: #ccc; /* Change border color to green when checked */
+}
+.check {
+    width: 10px;
+    height: 10px;
+    /* You can adjust these values as needed */
 }

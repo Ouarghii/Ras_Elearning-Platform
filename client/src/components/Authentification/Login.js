@@ -1,19 +1,32 @@
 import { Button, FormControl, FormLabel, useToast, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+
 const Login = () => {
-  const [email,setEmail]=useState()
-  const [password,setPassword]=useState()
- 
-  const [show,setShow]=useState(false)
-  const handleClick=()=>setShow(!show)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
-  const submitHandler=async()=>{
+
+  // Check for an existing token when the component mounts
+  useEffect(() => {
+    const token = localStorage.getItem('userInfo');
+    console.log(token)
+    if (token) {
+      // Redirect to authenticated route if token is present
+      history.push('/home');
+      console.log(token)
+    }
+  }, [history]);
+
+  const handleClick = () => setShow(!show);
+
+  const submitHandler = async () => {
     setLoading(true);
-    if ( !email || !password ) {
+    if (!email || !password) {
       toast({
         title: 'Please fill all the fields',
         status: 'warning',
@@ -24,7 +37,6 @@ const Login = () => {
       setLoading(false);
       return;
     }
-    
 
     try {
       const config = {
@@ -33,11 +45,10 @@ const Login = () => {
         },
       };
       const { data } = await axios.post('/api/user/login', {
-        
         email,
         password,
-       
       }, config);
+
       toast({
         title: 'Login Successful',
         status: 'success',
@@ -48,7 +59,7 @@ const Login = () => {
 
       localStorage.setItem('userInfo', JSON.stringify(data));
       setLoading(false);
-      history.push('/Home');
+      history.push('/home');
     } catch (error) {
       toast({
         title: 'Error Occurred!',
@@ -59,8 +70,10 @@ const Login = () => {
         position: 'bottom',
       });
       setLoading(false);
-  }
-}
+    }
+  };
+  
+
   return (
     <VStack spacing='5px' color="black">
         

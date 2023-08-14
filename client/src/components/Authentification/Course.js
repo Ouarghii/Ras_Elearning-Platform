@@ -56,9 +56,9 @@ const CardCourse = () => {
           <div className="data">
             <div className="content1">
               
-              <h1 className="title1"><a href="#">Node Js && Express Js Course</a></h1>
+              <h1 style={{fontSize:'45px'}}><a href="#">Node Js && Express Js Course</a></h1>
               <p className="text1" style={{alignItems:'center',textAlign:'center',color:'white',fontWeight:'bold',marginTop:'10px'}}>Improve Your Node & Express skills with us</p>
-              <a href="#" className="button" onClick={() => setIsPopupNodeOpen(true)} style={{fontSize:'25px',marginTop:'10px'}}>Start</a>
+              <a href="#" className="button" onClick={() => setIsPopupNodeOpen(true)} style={{fontSize:'25px',marginTop:'130px'}}>Start</a>
               {isPopupNodeOpen && (
                 <Popup
                   onClose={() => setIsPopupNodeOpen(false)}
