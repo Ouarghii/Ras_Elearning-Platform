@@ -10,6 +10,9 @@ import CardCourse from './components/Authentification/Course';
 import Main from './quiz/Main';
 import QuizReact from './quiz/QuizReact';
 import ResultReact from './quiz/ResultReact';
+import ResultNode from './quiz/ResultNode';
+import QuizNode from './quiz/QuizNode';
+import MainNode from './quiz/MainNode';
 
 function App() {
   return (
@@ -21,7 +24,9 @@ function App() {
       <Route path='/mainQuizReact' component={Main} />
       <Route path='/QuizReact' component={QuizReact}/> 
       <Route path='/ResultReact' component={ResultReact}/> 
-
+      <Route path='/ResultNode' component={ResultNode}/> 
+      <Route path='/QuizNode' component={QuizNode}/> 
+      <Route path='/mainQuizNode' component={MainNode}/> 
     </div>
   );
 }

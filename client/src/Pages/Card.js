@@ -33,10 +33,12 @@ const CardSection = () => {
         </figure>
         
         <figure className="card" onMouseEnter={handleCardHover} onMouseLeave={handleCardLeave}>
+          <Link to='/Course'>
           <img src="https://img.freepik.com/free-photo/faqs-customer-service-icon-concept_53876-132149.jpg?w=1060&t=st=1688914483~exp=1688915083~hmac=ad3541449d41e763595237eaa600b85907dbfe639cad4184fe29c4431b38609b" width="500" height="700" alt="card" />
           <figcaption className="card__description">
             <p>Messaging help contact us</p>
           </figcaption>
+          </Link>
         </figure>
         <figure className="card" onMouseEnter={handleCardHover} onMouseLeave={handleCardLeave}>
           <img src="https://img.freepik.com/free-photo/digital-filing-storage_1048-12068.jpg?w=996&t=st=1688914601~exp=1688915201~hmac=b0350893215a44b4af2e4ab25cea6dd597606524d041d3acfeffc0f1413b7bf7" width="400" height="700" alt="card" />

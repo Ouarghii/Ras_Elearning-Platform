@@ -9,6 +9,7 @@ import { resetResultAction } from '../redux/result_react_reducers';
 import {useDispatch,useSelector} from 'react-redux'
 import { attemps_Number, earnPoints_Number ,flagResult} from '../helper/helper';
 import { answersCorrect} from '../database/datareact'; // Import the answers array
+import { usePublishResult } from '../hooks/setResultReact';
 
 const ResultReact = () => {
   const dispatch=useDispatch()
@@ -18,9 +19,11 @@ const ResultReact = () => {
     dispatch(ResetAllAction())
     dispatch(resetResultAction())
   }
+  
   const {queue,answers}=useSelector(state=>state.questions)
   const { result, userId } = useSelector(state => state.result);
   const [username, setUsername] = useState(''); // State to hold the username
+  const [showEmailModal, setShowEmailModal] = useState(false); // State for showing email modal
 
   // Calculate various metrics based on the answers and result arrays
   const totalQuestions = answers.length;
@@ -33,23 +36,15 @@ const ResultReact = () => {
   }, 0);
   const flag=flagResult(totalPoints,earnPoints)
   useEffect(() => {
-    // Dispatch the pushResultAction for each question
-    console.log(earnPoints )
-    console.log(flag)
-    
-    // console.log(result.length)
-    answers.forEach((answerIndex, questionIndex) => {
-      dispatch(pushResultAction(answerIndex)); // Dispatch the action with the answer index
-    });
+    dispatch(pushResultAction(answers)); // Dispatch the action with the answers array
 
-   // Retrieve username from localStorage
-   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-   if (userInfo && userInfo.name) {
-     setUsername(userInfo.name);
-   }
- }, []);
-
-
+    // Retrieve username from localStorage
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo && userInfo.name) {
+      setUsername(userInfo.name); // Set the username state with the retrieved username
+    }
+  }, [dispatch, answers]);
+usePublishResult({result:answers,username:userId,totalAttempts,points:earnPoints,achived:flag?"Passed":"Fail"})
 
   return (
     <div className='result-container'>
@@ -58,7 +53,7 @@ const ResultReact = () => {
         <div className='result flex-center'>
             <div className='flex'>
                 <span>Username</span>
-                <span className='bold'>{username}</span>
+                <span className='bold'>{userId}</span>
             </div>
             <div className='flex'>
                 <span>Total Quiz Points:</span>
@@ -87,7 +82,7 @@ const ResultReact = () => {
           <Link className='btn' to='/mainQuizReact' onClick={onRestart}>Restart</Link>
         </div>
 <div className='table-react-container'>
-  <ResultReactTable />
+<ResultReactTable totalAttempts={totalAttempts} />
 </div>
     </div>
   )

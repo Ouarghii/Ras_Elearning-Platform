@@ -7,9 +7,17 @@ const cors = require("cors");
 const userRoutes = require('./Routes/userRoutes');
 const meetingRoutes = require('./Routes/meetingRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
-
+const reactQuiz=require('./Routes/reactQuiz')
+const nodeQuiz=require('./Routes/nodeQuiz')
 const app = express();
 const server = require('http').createServer(app);
+const nodemailer = require('nodemailer');
+const emailRoutes=require('./Routes/sendEmail')
+const sendCertificateEmail=require('./middleware/emailMiddleware')
+// const emailMiddleware = require('./middleware/emailMiddleware'); // Import the email middleware
+
+
+
 
 // Enable CORS for all routes, including Socket.IO requests
 app.use(cors());
@@ -24,9 +32,13 @@ app.get('/', (req, res) => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/meeting', meetingRoutes); // Use meeting routes
-
+app.use('/api/reactquiz', reactQuiz);
+app.use('/api/sendEmail', emailRoutes);
+app.use('/api/nodequiz',nodeQuiz)
 app.use(notFound);
 app.use(errorHandler);
+// app.post('/api/sendEmail', emailMiddleware.sendEmail);
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -38,6 +50,7 @@ const io = require('socket.io')(server, {
       credentials: true,
     },
   });
+  
   
 // Add your Socket.IO logic here
 
@@ -101,4 +114,6 @@ io.on('connection', (socket) => {
         console.log('Client disconnected');
     });
 });
+
+
 server.listen(PORT, console.log(`Server Started on PORT ${PORT}`.yellow.bold));

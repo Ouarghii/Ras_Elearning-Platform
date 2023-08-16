@@ -2,6 +2,7 @@ import * as Action from '../redux/question_reacr_reducers';
 import { pushResultAction ,updateResultAction} from '../redux/result_react_reducers';
 import { moveNextAction, movePrevAction, startExamAction } from '../redux/question_reacr_reducers';
 import { updateAnswersAction } from '../redux/question_reacr_reducers'; // Import the action to update answers
+import { postServerData } from '../helper/helper';
 
 export const PushAnswerReact = (result) => async (dispatch, getState, history) => {
     try {
@@ -21,6 +22,22 @@ export const PushAnswerReact = (result) => async (dispatch, getState, history) =
         console.log(error);
     }
 };
+
+
+export const usePublishResult = (resultData) => {
+    const { result, username } = resultData;
+  
+    (async () => {
+      try {
+        if (!result || !username) {
+          throw new Error("Couldn't get Result");
+        }
+        await postServerData('http://localhost:5000/api/reactquiz/resultReact', resultData, (data) => data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
 
 
 

@@ -7,6 +7,7 @@ import datareact, { answersCorrect } from '../database/datareact';
 import { PushAnswerReact } from '../hooks/setResultReact';
 import { pushResultAction } from '../redux/result_react_reducers';
 import { useHistory } from 'react-router-dom';
+import { getServerData } from '../helper/helper';
 
 const QuizReact = () => {
     const questionsState = useSelector(state => state.questions);
@@ -19,10 +20,11 @@ const QuizReact = () => {
     useEffect(() => {
         (async () => {
             try {
-                const question = await datareact;
-                if (question.length > 0) {
+                const [{questions,answers}]=await getServerData('http://localhost:5000/api/reactquiz/questionsReact',(data)=>data)
+                console.log( {questions,answers});
+                if (questions.length > 0) {
                     const initialAnswers = []; // Initialize as an empty array
-                    dispatch(startExamAction({ queue: question, answers: initialAnswers }));
+                    dispatch(startExamAction({ queue: questions, answers: initialAnswers }));
                 } else {
                     throw new Error("No Question Available");
                 }

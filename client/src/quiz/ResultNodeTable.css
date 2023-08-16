@@ -1,0 +1,47 @@
+/* ResultReactTable.css */
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 00vh; */
+    margin-top:10px;
+    width: 1500px;
+  }
+  
+  .result-table {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-header {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  .table-row {
+    transition: background-color 0.3s;
+  }
+  
+  .table-row:nth-child(even) {
+    background-color: #f0f0f0;
+  }
+  
+  .table-row:hover {
+    background-color: #e0e0e0;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  

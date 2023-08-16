@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
-import datareact from "../database/datareact";
 import * as Action from '../redux/question_reacr_reducers';
+import { getServerData } from "../helper/helper";
 
 
 export const useFetchQuestionReact = () => {
@@ -13,11 +13,13 @@ export const useFetchQuestionReact = () => {
 
         (async () => {
             try {
-                const question = await datareact;
-if (question.length > 0) {
-    const initialAnswers = new Array(question.length).fill(null);
-    setData(prevData => ({ ...prevData, isLoading: false, apiData: question }));
-    dispatch(Action.startExamAction({ queue: question, answers: initialAnswers }));
+                const [{questions,answers}]=await getServerData('http://localhost:5000/api/reactquiz/questionsReact',(data)=>data)
+                console.log( {questions,answers});
+
+if (questions.length > 0) {
+    const initialAnswers = new Array(questions.length).fill(null);
+    setData(prevData => ({ ...prevData, isLoading: false, apiData: questions }));
+    dispatch(Action.startExamAction({queue:questions,answers}));
 } else {
     throw new Error("No Question Available");
 }
