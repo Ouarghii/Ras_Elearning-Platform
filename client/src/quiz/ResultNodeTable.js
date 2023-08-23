@@ -13,6 +13,7 @@ const ResultNodeTable = ({ totalAttempts }) => {
     getServerData('http://localhost:5000/api/nodequiz/resultNode', (res) => {
       setData(res);
     });
+    console.log(data)
   }, []);
 
   const showAlert = (icon, text) => {
@@ -41,7 +42,7 @@ const ResultNodeTable = ({ totalAttempts }) => {
             <tr>
               <td>${selectedUser.attempts || 0}</td>
               <td>${selectedUser.points || 0}</td>
-              <td style="color: ${selectedUser.achived === 'Passed' ? '#0dff92' : 'red'};">${selectedUser.achived}</td>
+              <td style="color: ${selectedUser.achieved === 'Passed' ? '#0dff92' : 'red'};">${selectedUser.achived}</td>
             </tr>
           </tbody>
         </table>
@@ -78,48 +79,46 @@ const ResultNodeTable = ({ totalAttempts }) => {
           </tr>
         </thead>
         <tbody>
-          {data.length === 0 ? (
-            <tr>
-              <td colSpan='5'>No Data Found</td>
-            </tr>
-          ) : (
-            // Group results by username and calculate total attempts and points
-            Object.values(
-              data.reduce((accumulator, currentValue) => {
-                const username = currentValue.username;
-                if (!accumulator[username]) {
-                  accumulator[username] = {
-                    ...currentValue,
-                    totalAttempts: 0,
-                    totalPoints: 0,
-                  };
-                }
-                accumulator[username].totalAttempts += 1;
-                accumulator[username].totalPoints += currentValue.points;
-                return accumulator;
-              }, {})
-            ).map((v, i) => (
-              <tr className='table-row' key={i}>
-                <td>{v?.username || ''}</td>
-                <td>{v.totalAttempts}</td>
-                <td>{v.totalPoints}</td>
-                <td style={{ color: v?.achived === 'Passed' ? '#0dff92' : 'red' }}>
-                  {v?.achived}
-                </td>
-                <td>
-                  {v?.achived === 'Passed' && (
-                    <button
-                      className='btn'
-                      onClick={() => setSelectedUser(v)}
-                    >
-                      Get Certificate
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))
+  {data.length === 0 ? (
+    <tr>
+      <td colSpan='5'>No Data Found</td>
+    </tr>
+  ) : (
+    // Group results by username and calculate total attempts and points
+    Object.values(
+      data.reduce((accumulator, currentValue) => {
+        const username = currentValue.username;
+        if (!accumulator[username]) {
+          accumulator[username] = {
+            ...currentValue,
+            totalAttempts: 0,
+            totalPoints: 0,
+          };
+        }
+        accumulator[username].totalAttempts += 1;
+        accumulator[username].totalPoints += currentValue.points;
+        return accumulator;
+      }, {})
+    ).map((item, index) => (
+      <tr className='table-row' key={index}>
+        <td>{item?.username || ''}</td>
+        <td>{item.totalAttempts}</td>
+        <td>{item.totalPoints}</td>
+        <td style={{ color: item?.achieved === 'Passed' ? '#0dff92' : 'red' }}>
+          {item?.achieved}
+        </td>
+        <td>
+          {item?.achieved === 'Passed' && (
+            <button className='btn' onClick={() => setSelectedUser(item)}>
+              Get Certificate
+            </button>
           )}
-        </tbody>
+        </td>
+      </tr>
+    ))
+  )}
+</tbody>
+
       </table>
       {/* Email Modal */}
       {selectedUser && (

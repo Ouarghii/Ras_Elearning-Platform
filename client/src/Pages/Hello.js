@@ -15,11 +15,11 @@ const Hello = () => {
   };
 
   return (
-    <div className="scroll-container" style={{ background: 'linear-gradient(253deg, #0cc898, #1797d2, #864fe1)' }}>
-      <div className="full-screen">
+    <div className="scroll-container1" style={{ background: 'linear-gradient(253deg, #0cc898, #1797d2, #864fe1)' }}>
+      <div className="full-screen1">
         <div>
           <div>
-            <h1>Ras E-Learning Platform</h1>
+            <h1 className='h1'>Ras E-Learning Platform</h1>
             <br />
             <a className="button-line" href="#!" onClick={handleMoreButtonClick}>
               More

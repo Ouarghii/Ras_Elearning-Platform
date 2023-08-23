@@ -1,0 +1,93 @@
+/* NetflixSearchScreen.css */
+
+/* Header styles */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #111;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+/* Search bar styles */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e50914;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #d30813;
+}
+
+/* Search results styles */
+.search-results {
+  padding: 20px;
+}
+
+.result-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.result-item {
+  background-color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.result-item:hover {
+  transform: translateY(-5px);
+}
+
+.result-poster {
+  width: 100%;
+  height: auto;
+}
+
+.result-title {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.result-overview {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* No results styles */
+.no-results {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}

@@ -28,7 +28,7 @@ export const usePublishResultNode = (resultData) => {
             if (!result || !username) {
                 throw new Error("Couldn't get Result");
             }
-            await postServerData('http://localhost:5000/api/reactquiz/resultNode', resultData, (data) => data); // Update the API endpoint for Node-based result
+            await postServerData('http://localhost:5000/api/nodequiz/resultNode', resultData, (data) => data); // Update the API endpoint for Node-based result
         } catch (error) {
             console.log(error);
         }

@@ -1,0 +1,45 @@
+.App11 {
+    text-align: center;
+    width: 100%;
+    
+  }
+  
+  
+.search-bar {
+    margin: 20px;
+  }
+  
+  .screens-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px;
+    height: 100vh; /* Set the height of the container to fill the viewport */
+  }
+  
+  .screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  /* Individual screen colors */
+  .bg-color-google {
+    background-color: #FF5733;
+  }
+  
+  .bg-color-gpt {
+    background-color: #33FF57;
+  }
+  
+  .bg-color-youtube {
+    background-color: #5733FF;
+  }
+  
+  .bg-color-api {
+    background-color: #FF33A1;
+  }

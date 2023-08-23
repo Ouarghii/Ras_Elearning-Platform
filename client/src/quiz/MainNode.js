@@ -30,8 +30,8 @@ const MainNode = () => {
           <Input variant='outline' style={{ marginTop: '50px' }} ref={inputRef} type='text' placeholder='Username*' />
         </form>
         <div className='start' style={{ marginTop: '50px' }}>
-          <Link to='/QuizReact' className='btn' onClick={startQuiz}>
-            Start React Quiz
+          <Link to='/QuizNode' className='btn' onClick={startQuiz}>
+            Start Node Quiz
           </Link>
         </div>
       </div>

@@ -2,9 +2,11 @@
 
 
 .App{
-  min-height: 100vh;
-  display: flex;
+  /* min-height: 100vh;
+  display: flex; */
   /* background-image: url('../assets/background.png'); */
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
+  background: linear-gradient(253deg, #0cc898, #1797d2, #864fe1);
+
 }

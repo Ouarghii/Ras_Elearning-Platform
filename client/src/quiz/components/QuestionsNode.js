@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 /** Custom Hook **/
 import { useFetchQuestionNode } from '../../hooks/FetchQuestionNode'; // Update with your Node-specific hook
+import { updateAnswersAction } from '../../redux/question_node_reducers';
 
 const QuestionNode = ({ onChecked }) => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -16,6 +17,11 @@ const QuestionNode = ({ onChecked }) => {
     const onSelect = (optionIndex) => {
         setSelectedOption(optionIndex);
         onChecked(optionIndex);
+    
+        // Dispatch the action to update the answers
+        const updatedAnswers = [...result];
+        updatedAnswers[trace] = optionIndex;
+        dispatch(updateAnswersAction(updatedAnswers));
     };
 
     const currentQuestion = queue.length > 0 && trace >= 0 && trace < queue.length ? queue[trace] : null;

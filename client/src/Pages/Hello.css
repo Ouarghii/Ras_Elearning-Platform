@@ -41,7 +41,7 @@ body {
       background-position: 0% 50%
     }
   }
-  .scroll-container {
+  .scroll-container1 {
     overflow-y: auto;
     height: 100vh;
   }
@@ -50,7 +50,7 @@ body {
     padding: 2rem;
   }
   
-  .full-screen {
+  .full-screen1 {
     /* position: fixed; */
     top: 0;
     right: 0;
@@ -73,7 +73,7 @@ body {
     text-align: center;
   }
   
-  h1 {
+  .h1 {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
@@ -83,7 +83,7 @@ body {
     text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
   }
   
-  h1:after {
+  .h1:after {
     display: block;
     color: #fff;
     letter-spacing: 1px;

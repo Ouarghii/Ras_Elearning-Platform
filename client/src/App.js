@@ -14,6 +14,12 @@ import ResultNode from './quiz/ResultNode';
 import QuizNode from './quiz/QuizNode';
 import MainNode from './quiz/MainNode';
 
+import YoutubeSearch from './components/YoutubeSearch';
+import GoogleSearch from './components/GoogleSearch';
+import ChatGptSearch from './components/ChatGptSearch';
+import W3SchoolSearch from './components/SotifySearch';
+import Search from './components/Search';
+
 function App() {
   return (
     <div className="App">
@@ -27,6 +33,7 @@ function App() {
       <Route path='/ResultNode' component={ResultNode}/> 
       <Route path='/QuizNode' component={QuizNode}/> 
       <Route path='/mainQuizNode' component={MainNode}/> 
+      <Route path='/Search' component={Search}/> 
     </div>
   );
 }

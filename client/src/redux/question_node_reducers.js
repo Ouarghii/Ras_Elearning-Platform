@@ -9,11 +9,12 @@ const questionNodeReducer = createSlice({
     },
     reducers: {
         startExamAction: (state, action) => {
-            const { queue } = action.payload; // Extract the questions array from the payload
+            const { queue } = action.payload;
+            const initialAnswers = new Array(queue.length).fill(null); // Initialize answers array
             return {
                 ...state,
                 queue,
-                answers: [] // Set the initialized answers array
+                answers: initialAnswers
             };
         },
         moveNextAction:(state)=>{
@@ -34,7 +35,8 @@ const questionNodeReducer = createSlice({
                 trace: 0
             }
         },updateAnswersAction: (state, action) => {
-            state.answers = action.payload;
+            const newAnswers = action.payload;
+            state.answers = newAnswers;
         },
     }
 });
