@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Hello.css';
 import CardSection from './Card';
 import HowItWorksSection from './HowItWorksSection';
+import { Link } from 'react-router-dom';
 
 const Hello = () => {
   const [showForm, setShowForm] = useState(false);
@@ -21,9 +22,11 @@ const Hello = () => {
           <div>
             <h1 className='h1'>Ras E-Learning Platform</h1>
             <br />
-            <a className="button-line" href="#!" onClick={handleMoreButtonClick}>
-              More
+            <Link to='/feedback'>
+            <a className="button-line" href="#!">
+              Feedback
             </a>
+            </Link>
           </div>
         </div>
       </div>

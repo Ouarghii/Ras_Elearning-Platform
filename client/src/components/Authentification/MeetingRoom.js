@@ -70,6 +70,12 @@ const MeetingRoom = () => {
       videoRef.current.srcObject = localStream;
     }
   }, [localStream]);
+  // const toggleCamera = () => {
+  //   if (localStream) {
+  //     setIsCameraOn((prev) => !prev);
+  //     localStream.getVideoTracks().forEach((track) => (track.enabled = !isCameraOn));
+  //   }
+  // };
 
   const generateMeetingCode = () => {
     return uuidv4().substr(0, 6).toUpperCase();
@@ -122,9 +128,49 @@ const MeetingRoom = () => {
       setAllowedParticipants((prev) => [...prev, participant]);
     }
   };
+  // Recording state
+  const [isRecording, setIsRecording] = useState(false);
+  const [mediaRecorder, setMediaRecorder] = useState(null);
+  const recordedChunks = useRef([]);
+
+  // Start recording function
+  const startRecording = () => {
+    if (localStream) {
+      const stream = videoRef.current.srcObject;
+      if (stream) {
+        const recorder = new MediaRecorder(stream);
+        recorder.ondataavailable = (e) => {
+          if (e.data.size > 0) {
+            recordedChunks.current.push(e.data);
+          }
+        };
+        recorder.onstop = () => {
+          const blob = new Blob(recordedChunks.current, { type: 'video/webm' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${meetingCode}_recorded.webm`;
+          a.click();
+          recordedChunks.current = [];
+        };
+        setMediaRecorder(recorder);
+        recorder.start();
+        setIsRecording(true);
+      }
+    }
+  };
+
+  // Stop recording function
+  const stopRecording = () => {
+    if (mediaRecorder) {
+      mediaRecorder.stop();
+      setIsRecording(false);
+    }
+  };
 
   return (
-    <Container fluid className="meeting-container">
+    <div>
+    <Container className="meeting-container">
       <Row className="header-row">
         <Col>
           <h1 className="meeting-title">Video Meeting Room</h1>
@@ -205,71 +251,68 @@ const MeetingRoom = () => {
         </Col>
       </Row>
       {/* Invite Others Popup */}
-      <Modal centered style={{ width: '50%' }}  show={showParticipants} onHide={() => setShowParticipants(false)}>
+       {/* Invite Others Popup */}
+      <Modal centered style={{ width: '50%' }} show={showParticipants} onHide={() => setShowParticipants(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Select Participants to Invite</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-  <div className="invite-popup-content">
-    <Row className="participants-row">
-      {availableParticipants.map((participant) => (
-        <Col key={participant.name} xs={6} md={4} lg={3} className="participant-col">
-          <div className="participant-container">
-            <img
-              src={participant.picture} width={'50%'}  // Use the picture property from initialParticipants
-              alt="Participant"
-              className="participant-image"
-            />
-            <p className="participant-name">{participant.name}</p>
-            <Button
-              variant="primary"
-              onClick={() => handleInviteClick(participant)}
-              className="action-button invite-participant-button"
-            >
-              Invite
-            </Button>
+          <div className="invite-popup-content">
+            <Row className="participants-row">
+              {availableParticipants.map((participant) => (
+                <Col key={participant.name} xs={6} md={4} lg={3} className="participant-col">
+                  <div className="participant-container">
+                    <img src={participant.picture} alt="Participant" className="participant-image" />
+                    <p className="participant-name">{participant.name}</p>
+                    <Button
+                      variant="primary"
+                      onClick={() => handleInviteClick(participant)}
+                      className="action-button invite-participant-button"
+                    >
+                      Invite
+                    </Button>
+                  </div>
+                </Col>
+              ))}
+            </Row>
           </div>
-        </Col>
-      ))}
-    </Row>
-  </div>
-</Modal.Body>
-
+        </Modal.Body>
       </Modal>
+
       {/* Selected Participant Popup */}
       {showSelectedParticipantPopup && (
-  <div className="invite-popup">
-    <div className="invite-content">
-      <img
-        src={selectedParticipant.picture}
-        alt="Selected Participant"
-        className="selected-participant-image"
-      />
-      <p className="selected-participant-name">{selectedParticipant.name}</p>
-      <Button
-        variant="primary"
-        onClick={() => {
-          toggleAllowedParticipant(selectedParticipant.name);
-          setShowSelectedParticipantPopup(false); // Close the pop-up
-        }}
-        className={`action-button close-popup-button ${
-          allowedParticipants.includes(selectedParticipant.name)
-            ? 'chat-allowed'
-            : 'chat-disallowed'
-        }`}
-      >
-        {allowedParticipants.includes(selectedParticipant.name) ? 'Disallow Chat' : 'Allow Chat'}
-      </Button>
-      <Button
-        variant="secondary"
-        onClick={() => setShowSelectedParticipantPopup(false)} // Close the pop-up
-        className="action-button close-popup-button"
-      >
-        Close
-      </Button>
-    </div>
-  </div>
-)}
+  <div className={`invite-popup1 ${showSelectedParticipantPopup ? 'show' : ''}`}>
+  <div className="invite-content1">
+            <img
+              src={selectedParticipant.picture}
+              alt="Selected Participant"
+              className="selected-participant-image"
+            />
+            <p className="selected-participant-name">{selectedParticipant.name}</p>
+            <Button
+              variant="primary"
+              onClick={() => {
+                toggleAllowedParticipant(selectedParticipant.name);
+                setShowSelectedParticipantPopup(false); // Close the pop-up
+              }}
+              className={`action-button close-popup-button ${
+                allowedParticipants.includes(selectedParticipant.name)
+                  ? 'chat-allowed'
+                  : 'chat-disallowed'
+              }`}
+            >
+              {allowedParticipants.includes(selectedParticipant.name) ? 'Disallow Chat' : 'Allow Chat'}
+            </Button>
+            <Button
+      variant="secondary"
+      onClick={() => setShowSelectedParticipantPopup(false)} // Close the pop-up
+      className="action-button close-popup-button"
+    >
+      Close
+    </Button>
+          </div>
+        </div>
+      )}
       <Widget
         handleNewUserMessage={(newMessage) => {
           // Allow messages only from allowed participants
@@ -281,6 +324,7 @@ const MeetingRoom = () => {
         subtitle={`Chatting as ${participantName}`}
       />
     </Container>
+    </div>
   );
 };
 

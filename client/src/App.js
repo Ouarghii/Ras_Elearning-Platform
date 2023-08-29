@@ -19,6 +19,7 @@ import GoogleSearch from './components/GoogleSearch';
 import ChatGptSearch from './components/ChatGptSearch';
 import W3SchoolSearch from './components/SotifySearch';
 import Search from './components/Search';
+import FeedbackForm from './components/FeedBackForm';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route path='/QuizNode' component={QuizNode}/> 
       <Route path='/mainQuizNode' component={MainNode}/> 
       <Route path='/Search' component={Search}/> 
+      <Route path='/feedback' component={FeedbackForm} />
     </div>
   );
 }

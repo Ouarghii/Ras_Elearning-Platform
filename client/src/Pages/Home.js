@@ -19,7 +19,7 @@ const Home = () => {
       >
         <Text fontSize="4xl" fontFamily="Work sans" textAlign="center">
          
-          Ras💘Msg
+          Ras E-Learning Platform
         </Text>
       </Box>
       <Box p={4} bg="White" w="100%" borderRadius="lg" borderWidth="1px">

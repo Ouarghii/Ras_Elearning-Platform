@@ -1,0 +1,149 @@
+.success-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .feedback-form {
+    /* display: flex; */
+    /* flex-direction: column; */
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-in-out;
+    width: 100%;
+    /* border: 1px solid black; */
+  }
+  /* FeedbackCard.css */
+.feedback-card {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .feedback-form-container {
+    position: relative;
+    overflow: hidden; /* Clip the animated elements */
+    height: auto; /* Set the height as needed */
+  }
+  
+  
+
+  .feedback-container {
+    /* max-width: 500px; */
+    width: 80%;
+    height: 90%;
+
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .feedback-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* background-color: #f8f8f8; */
+  }
+  .inpuut {
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 100%; /* Set width to 100% */
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .textt {
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 100%; /* Set width to 100% */
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  /* FeedbackForm.css */
+/* ... Your existing styles ... */
+
+.feedback-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Styles for the animated feedback card */
+  .feedback-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease-in-out;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  
+  .feedback-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    flex: 1;
+  }
